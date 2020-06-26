@@ -16,3 +16,5 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("root")
 );
+
+console.log("public key:", process.env.STRIPE_PUBLIC_KEY);
