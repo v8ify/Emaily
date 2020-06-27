@@ -1,13 +1,16 @@
 require("dotenv").config();
 require("./models/User");
+require("./models/Survey");
 require("./services/passport");
 const express = require("express");
 const mongoose = require("mongoose");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
+const bodyParser = require("body-parser");
+
 const authRoutes = require("./routes/authRoutes");
 const billingRoutes = require("./routes/billingRoutes");
-const bodyParser = require("body-parser");
+const surveyRoutes = require("./routes/surveyRoutes");
 
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
@@ -30,6 +33,7 @@ app.use(passport.session());
 
 authRoutes(app);
 billingRoutes(app);
+surveyRoutes(app);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
