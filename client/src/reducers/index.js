@@ -10,7 +10,17 @@ const authReducer = (state = null, action) => {
   }
 };
 
+const surveysReducer = (state = [], action) => {
+  switch (action.type) {
+    case "FETCH_SURVEYS":
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   auth: authReducer,
   form: formReducer,
+  surveys: surveysReducer,
 });
